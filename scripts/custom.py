@@ -253,7 +253,7 @@ def customize(master):
         options['filetypes'] = [('Images', '.png'), ('all files', '.*')]
         options['initialdir'] = './'
         options['initialfile'] = logo_var.get()
-        options['title'] = 'Logo finder'
+        options['title'] = 'Choisir le Logo'
         options['parent'] = self
         logo_file = tkFileDialog.askopenfilename(**options)
         logo_var.set(logo_file)
@@ -279,11 +279,11 @@ def customize(master):
                                                       update_albumID)
     ### add in Album selector
     Tkinter.Button(album_frame,
-                   text="Lookup",
+                   text="Choisir",
                    command=launch_album_select).pack()
 
-    string_customizer('Countdown1', countdown1, update_countdown1)
-    string_customizer('Countdown2', countdown2, update_countdown2)
+    string_customizer('Compte a rebour 1', countdown1, update_countdown1)
+    string_customizer('Compte a rebour 2', countdown2, update_countdown2)
     string_customizer('Timelapse', TIMELAPSE, update_timelapse)
     bool_customizer('Sign me in', SIGN_ME_IN, update_sign_me_in)
     archive_var = Tkinter.StringVar()
@@ -321,7 +321,7 @@ def customize(master):
 if __name__ == '__main__':
     import Tkinter
     r = Tkinter.Tk()
-    b = Tkinter.Button(r, text='help', command=lambda :customize(r))
+    b = Tkinter.Button(r, text='Aide', command=lambda :customize(r))
     b.pack()
     r.mainloop()
     print emailSubject
