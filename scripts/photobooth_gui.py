@@ -150,9 +150,9 @@ def check_and_snap(force=False, countdown1=None):
         ## inform alamode that we are ready to receive button press events
         ## ser.write('e') #enable button (not used)
         Button_enabled = True
-        # can.delete("text")
-        # can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Press button when ready", font=custom.CANVAS_FONT, tags="text")
-        # can.update()
+        can.delete("text")
+        can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="CHEEEEEEEEEEZZZZZZZZZZZ", font=custom.CANVAS_FONT, tags="text")
+        can.update()
 
     ## get command string from alamode
 #    command = ser.readline().strip()
@@ -175,7 +175,7 @@ def check_and_snap(force=False, countdown1=None):
             last_snap = time.time()
             display_image(im)
             can.delete("text")
-            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Envoie de l'image", font=custom.CANVAS_FONT, tags="text")
+            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Envoi de l'image", font=custom.CANVAS_FONT, tags="text")
             can.update()
             if signed_in:
                 if custom.albumID == 'None':
@@ -232,19 +232,19 @@ def force_snap(countdown1=None):
 #if they enter an email address send photo. add error checking
 def sendPic(*args):
     if signed_in:
-        print 'Envoie de la photo  %s' % email_addr.get()
+        print 'Envoi de la photo  %s' % email_addr.get()
         try:
             sendMail(email_addr.get().strip(),
-                     custom.emailSubject,
-                     custom.emailMsg,
+                     custom.Sujet,
+                     custom.Message,
                      custom.PROC_FILENAME)
             etext.delete(0, END)
             etext.focus_set()
             kill_tkkb()
         except Exception, e:
-            print 'Echec de l\'envoie::', e
+            print 'Echec de l\'envoi::', e
             can.delete("all")
-            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Echec de l'envoie", font=custom.CANVAS_FONT, tags="text")
+            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Echec de l'envoi", font=custom.CANVAS_FONT, tags="text")
             can.update()
             time.sleep(1)
             can.delete("all")
