@@ -28,8 +28,6 @@ camera = mycamera.PiCamera()
 root = Tk()
 root.attributes("-fullscreen",True)
 
-capture_zone =
-
 def screenshot(*args):
     import screenshot
     screenshot.snap()
