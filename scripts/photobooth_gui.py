@@ -290,11 +290,17 @@ root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
-#Button(frame, text="Parametres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
-#tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
-#tkkb_button.pack(side=LEFT)
+param_button = Button(frame, text="Parametres", command=lambda *args: custom.customize(root))
+param_button.pack(side=LEFT)
+#send_button.config(state=DISABLED)
+
+tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
+tkkb_button.pack(side=LEFT)
+#tkkb_button.config(state=DISABLED)
+
 send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
-#send_button.pack(side=RIGHT)
+send_button.pack(side=RIGHT)
+#send_button.config(state=DISABLED)
 
 if custom.TIMELAPSE > 0:
     timelapse_label = Label(frame, text=custom.TIMELAPSE)
@@ -303,10 +309,12 @@ else:
 timelapse_label.pack(side=LEFT)
 
 ## add a text entry box for email addresses
-#etext = Entry(frame,width=40, textvariable=email_addr, font=custom.BUTTON_FONT)
-#etext.pack()
+etext = Entry(frame,width=40, textvariable=email_addr, font=custom.BUTTON_FONT)
+#etext.config(state=DISABLED)
+etext.pack()
+
 frame.pack()
-#etext.bind('<Button-1>', launch_tkkb)
+etext.bind('<Button-1>', launch_tkkb)
 
 def labeled_slider(parent, label, from_, to, side, variable):
     frame = Frame(parent)
