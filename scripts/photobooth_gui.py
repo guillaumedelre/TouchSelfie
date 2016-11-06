@@ -304,26 +304,31 @@ def makemenu(win):
     win.config(menu=top)
 
     snapMenu = Menu(top)
-    snapMenu.add_command(label='Selfie',  command=force_snap, font=('Tempus Sans ITC', 36), underline=0)
+    snapMenu.add_command(label='Selfie', command=force_snap, font=('Tempus Sans ITC', 36), underline=0)
     snapMenu.add_command(label='Warhol', command=warhol_snap, font=('Tempus Sans ITC', 36), underline=0)
     snapMenu.add_command(label='x4', command=four_snap, font=('Tempus Sans ITC', 36), underline=0)
     snapMenu.add_separator()
     snapMenu.add_command(label='Quit', command=win.quit, font=('Tempus Sans ITC', 18), underline=0)
     top.add_cascade(label='Capture', menu=snapMenu, font=('Tempus Sans ITC', 36), underline=0)
 
+    paramMenu = Menu(top)
+    paramMenu.add_command(label='Preferences', command=lambda *args: custom.customize(root), font=('Tempus Sans ITC', 36), underline=0)
+    paramMenu.add_command(label='Clavier', command=launch_tkkb, font=('Tempus Sans ITC', 36), underline=0)
+    top.add_cascade(label='Parametres', menu=paramMenu, font=('Tempus Sans ITC', 36), underline=0)
+
 makemenu(root)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
-param_button = Button(frame, text="Parametres", command=lambda *args: custom.customize(root))
-param_button.pack(side=LEFT)
-#send_button.config(state=DISABLED)
+#param_button = Button(frame, text="Parametres", command=lambda *args: custom.customize(root))
+#param_button.pack(side=LEFT)
+##send_button.config(state=DISABLED)
 
-tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
-tkkb_button.pack(side=LEFT)
-#tkkb_button.config(state=DISABLED)
+#tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
+#tkkb_button.pack(side=LEFT)
+##tkkb_button.config(state=DISABLED)
 
-send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
-send_button.pack(side=RIGHT)
+#send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
+#send_button.pack(side=RIGHT)
 #send_button.config(state=DISABLED)
 
 if custom.TIMELAPSE > 0:
