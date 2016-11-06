@@ -387,7 +387,7 @@ else:
 #    etext.config(state=DISABLED)
 
 ### take the first photo (no delay)
-camera.start_preview()
+boothcam.mycamera.PiCamera()
 can.delete("text")
 can.create_text(WIDTH/2, HEIGHT/2, text="Touchez quand vous etes prets", font=custom.CANVAS_FONT, tags="splash")
 can.update()
