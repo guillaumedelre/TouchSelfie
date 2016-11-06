@@ -355,14 +355,14 @@ def labeled_slider(parent, label, from_, to, side, variable):
 ## add a software button in case hardware button is not available
 interface_frame = Frame(root)
 
-warhol_button = Button(interface_frame, text="WarholSnap", command=warhol_snap, font=custom.BUTTON_FONT)
-warhol_button.pack(side=RIGHT) ## moved to canvas
+#warhol_button = Button(interface_frame, text="WarholSnap", command=warhol_snap, font=custom.BUTTON_FONT)
+#warhol_button.pack(side=RIGHT) ## moved to canvas
 
-four_button = Button(interface_frame, text="FourSnap", command=four_snap, font=custom.BUTTON_FONT)
-four_button.pack(side=RIGHT) ## moved to canvas
+#four_button = Button(interface_frame, text="FourSnap", command=four_snap, font=custom.BUTTON_FONT)
+#four_button.pack(side=RIGHT) ## moved to canvas
 
-snap_button = Button(interface_frame, text="SimpleSnap", command=force_snap, font=custom.BUTTON_FONT)
-snap_button.pack(side=RIGHT) ## moved to canvas
+#snap_button = Button(interface_frame, text="SimpleSnap", command=force_snap, font=custom.BUTTON_FONT)
+#snap_button.pack(side=RIGHT) ## moved to canvas
 
 interface_frame.pack(side=TOP)
 
