@@ -63,8 +63,9 @@ def launch_tkkb(*args):
         def onEnter(*args):
             kill_tkkb()
             sendPic()
-        Tkkb(tkkb, etext, onEnter=onEnter)
-        etext.config(state=NORMAL)
+        #Tkkb(tkkb, etext, onEnter=onEnter)
+        Tkkb(tkkb, '', onEnter=onEnter)
+        #etext.config(state=NORMAL)
         tkkb.wm_attributes("-topmost", 1)
         tkkb.transient(root)
         tkkb_button.config(command=kill_tkkb, text="Close KB")
@@ -141,11 +142,11 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
     if countdown1 is None:
         countdown1 = custom.countdown1
     if signed_in:
-        send_button.config(state=NORMAL)
-        etext.config(state=NORMAL)
+#        send_button.config(state=NORMAL)
+#        etext.config(state=NORMAL)
     else:
-        send_button.config(state=DISABLED)
-        etext.config(state=DISABLED)
+#        send_button.config(state=DISABLED)
+#        etext.config(state=DISABLED)
     if (Button_enabled == False):
         ## inform alamode that we are ready to receive button press events
         ## ser.write('e') #enable button (not used)
@@ -248,8 +249,8 @@ def sendPic(*args):
                      custom.emailSubject,
                      custom.emailMsg,
                      custom.PROC_FILENAME)
-            etext.delete(0, END)
-            etext.focus_set()
+            #etext.delete(0, END)
+            #etext.focus_set()
             kill_tkkb()
         except Exception, e:
             print 'Echec de l\'envoi::', e
@@ -338,12 +339,12 @@ else:
 timelapse_label.pack(side=LEFT)
 
 ## add a text entry box for email addresses
-etext = Entry(frame,width=40, textvariable=email_addr, font=custom.BUTTON_FONT)
+#etext = Entry(frame,width=40, textvariable=email_addr, font=custom.BUTTON_FONT)
 #etext.config(state=DISABLED)
-etext.pack()
+#etext.pack()
 
 frame.pack()
-etext.bind('<Button-1>', launch_tkkb)
+#etext.bind('<Button-1>', launch_tkkb)
 
 def labeled_slider(parent, label, from_, to, side, variable):
     frame = Frame(parent)
@@ -379,8 +380,8 @@ if custom.SIGN_ME_IN:
 else:
     signed_in = False
 if not signed_in:
-    send_button.config(state=DISABLED)
-    etext.config(state=DISABLED)
+#    send_button.config(state=DISABLED)
+#    etext.config(state=DISABLED)
 
 ### take the first photo (no delay)
 can.delete("text")
@@ -393,7 +394,7 @@ root.after(200, check_and_snap)
 if custom.SIGN_ME_IN:
     root.after(custom.oauth2_refresh_period, refresh_oauth2_credentials)
 root.wm_title("SmileBox")
-etext.focus_set()
+#etext.focus_set()
 # etext.bind("<Enter>", sendPic)
 on_rgb_change()
 root.mainloop()
