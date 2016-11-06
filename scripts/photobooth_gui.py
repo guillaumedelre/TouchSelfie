@@ -312,7 +312,8 @@ root.geometry("%dx%d+0+0" % (WIDTH, HEIGHT))
 root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
-def makemenu(win):
+def makemenu():
+    win = Toplevel(root)
     top = Menu(win)
     win.config(menu=top)
 
@@ -395,7 +396,7 @@ else:
 #    etext.config(state=DISABLED)
 
 def stand_by():
-    camera.start_preview(fullscreen=False, window=(0, 60, SCREEN_W, SCREEN_H), hflip=True, alpha=192)
+    camera.start_preview(fullscreen=False, window=(0, 0, SCREEN_W, SCREEN_H), hflip=True, alpha=192)
     can.delete("text")
     can.create_text(WIDTH/2, HEIGHT/2, text="Touchez moi...", font=('Tempus Sans ITC', 18), tags="splash")
     can.update()
@@ -410,7 +411,7 @@ def wakeup():
 #force_snap(countdown1=0)
 
 stand_by()
-makemenu(root)
+makemenu()
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)
