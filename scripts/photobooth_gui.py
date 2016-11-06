@@ -225,12 +225,12 @@ root.protocol('WM_DELETE_WINDOW', on_close)
 def warhol_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    check_and_snap(force=True, countdown1=countdown1, effect='Warhol')
+    check_and_snap(force=False, countdown1=countdown1, effect='Warhol')
 
 def four_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    check_and_snap(force=True, countdown1=countdown1, effect='Four')
+    check_and_snap(force=False, countdown1=countdown1, effect='Four')
 
 def force_snap(countdown1=None):
     if countdown1 is None:
@@ -345,7 +345,7 @@ four_button.pack(side=RIGHT) ## moved to canvas
 snap_button = Button(interface_frame, text="SimpleSnap", command=force_snap, font=custom.BUTTON_FONT)
 snap_button.pack(side=RIGHT) ## moved to canvas
 
-interface_frame.pack(side=RIGHT)
+interface_frame.pack(side=TOP)
 
 ## the canvas will display the images
 can = Canvas(root, width=WIDTH, height=HEIGHT)
