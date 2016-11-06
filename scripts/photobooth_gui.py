@@ -351,7 +351,7 @@ snap_button.pack(side=RIGHT) ## moved to canvas
 
 interface_frame.pack(side=TOP)
 
-def start_camera()
+def start_camera():
     camera = mycamera.PiCamera()
     camera.start_preview()
     camera.preview_alpha = 255
