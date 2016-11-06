@@ -305,9 +305,9 @@ frame = Frame(root)
 def makemenu():
     top = Menu(root)
     root.config(menu=top)
-    top.add_command(label='Selfie    ', command=force_snap, font=('Tempus Sans ITC', 36))
-    top.add_command(label='  Warhol  ', command=warhol_snap, font=('Tempus Sans ITC', 36))
-    top.add_command(label='  x4  ', command=four_snap, font=('Tempus Sans ITC', 36))
+    top.add_command(label='Selfie  ', command=force_snap, font=('Tempus Sans ITC', 36))
+    top.add_command(label='   Warhol  ', command=warhol_snap, font=('Tempus Sans ITC', 36))
+    top.add_command(label='   x4  ', command=four_snap, font=('Tempus Sans ITC', 36))
     top.add_command(label='  Quitter', command=root.quit, font=('Tempus Sans ITC', 36))
 
     #paramMenu = Menu(top)
