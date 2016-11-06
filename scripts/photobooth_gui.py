@@ -16,10 +16,6 @@ import custom
 import Image
 import config
 from constants import *
-try:
-    import picamera as mycamera
-except ImportError:
-    import cv2_camera as mycamera
 
 ## This is a simple GUI, so we allow the root singleton to do the legwork
 root = Tk()
@@ -166,8 +162,6 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
         Button_enabled = False
         can.delete("text")
         can.update()
-
-        stop_camera()
 
         if timelapse_due():
             countdown1 = 0
@@ -353,17 +347,6 @@ snap_button.pack(side=RIGHT) ## moved to canvas
 
 interface_frame.pack(side=TOP)
 
-camera = mycamera.PiCamera()
-def start_camera():
-    camera.start_preview()
-    camera.preview_alpha = 192
-    camera.preview_window = (0, 0, SCREEN_W, SCREEN_H)
-    camera.preview_fullscreen = False
-
-def stop_camera():
-    camera.stop_preview()
-
-
 ## the canvas will display the images
 can = Canvas(root, width=WIDTH, height=HEIGHT)
 can.pack()
@@ -385,7 +368,6 @@ can.delete("text")
 #can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
 can.update()
 #force_snap(countdown1=0)
-start_camera()
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)
