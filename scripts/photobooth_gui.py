@@ -395,7 +395,7 @@ else:
 #    etext.config(state=DISABLED)
 
 def stand_by():
-    camera.start_preview(fullscreen=False, window=(0, 100, SCREEN_W, SCREEN_H), hflip=True, alpha=255)
+    camera.start_preview(fullscreen=False, window=(0, 60, SCREEN_W, SCREEN_H), hflip=True, alpha=255)
     can.delete("text")
     can.create_text(WIDTH/2, HEIGHT/2, text="Touchez moi...", font=('Tempus Sans ITC', 18), tags="splash")
     can.update()
