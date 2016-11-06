@@ -16,6 +16,10 @@ import custom
 import Image
 import config
 from constants import *
+try:
+    import picamera as mycamera
+except ImportError:
+    import cv2_camera as mycamera
 
 ## This is a simple GUI, so we allow the root singleton to do the legwork
 root = Tk()
@@ -365,9 +369,11 @@ if not signed_in:
 
 ### take the first photo (no delay)
 can.delete("text")
-can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
+#can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
 can.update()
 #force_snap(countdown1=0)
+camera = mycamera.PiCamera()
+camera.start_preview()
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)
