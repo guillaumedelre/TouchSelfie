@@ -351,6 +351,13 @@ snap_button.pack(side=RIGHT) ## moved to canvas
 
 interface_frame.pack(side=TOP)
 
+def start_camera
+    camera = mycamera.PiCamera()
+    camera.start_preview()
+    camera.preview_alpha = 255
+    camera.preview_window = (0, 0, SCREEN_W, SCREEN_H)
+    camera.preview_fullscreen = False
+
 ## the canvas will display the images
 can = Canvas(root, width=WIDTH, height=HEIGHT)
 can.pack()
@@ -372,8 +379,7 @@ can.delete("text")
 #can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
 can.update()
 #force_snap(countdown1=0)
-camera = mycamera.PiCamera()
-camera.start_preview()
+start_camera()
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)
