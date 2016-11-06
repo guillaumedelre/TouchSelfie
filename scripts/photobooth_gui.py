@@ -313,9 +313,6 @@ def makemenu(win):
     top.add_cascade(label='File',     menu=snapMenu,        underline=0)
 
 makemenu(root)
-filemenu = Menu(root)
-menu.add_cascade(label="File", menu=filemenu)
-filemenu.add_command(label="New", command=callback)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
 param_button = Button(frame, text="Parametres", command=lambda *args: custom.customize(root))
