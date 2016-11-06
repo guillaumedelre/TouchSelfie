@@ -129,7 +129,7 @@ def refresh_oauth2_credentials():
             print 'Echec du rafraichissement'
         root.after(custom.oauth2_refresh_period, refresh_oauth2_credentials)
 
-def check_and_snap(force=False, countdown1=None):
+def check_and_snap(force=False, countdown1=None, effect='None'):
     '''
     Check button status and snap a photo if button has been pressed.
 
@@ -165,7 +165,7 @@ def check_and_snap(force=False, countdown1=None):
 
         if timelapse_due():
             countdown1 = 0
-        im = snap(can, countdown1=countdown1, effect='None')
+        im = snap(can, countdown1=countdown1, effect)
 #        setLights(r_var.get(), g_var.get(), b_var.get())
         if im is not None:
             if custom.TIMELAPSE > 0:
@@ -326,8 +326,15 @@ def labeled_slider(parent, label, from_, to, side, variable):
 ## add a software button in case hardware button is not available
 interface_frame = Frame(root)
 
-snap_button = Button(interface_frame, text="snap", command=force_snap, font=custom.BUTTON_FONT)
+warhol_button = Button(interface_frame, text="WarholSnap", command=check_and_snap(False, None, 'Warhol'), font=custom.BUTTON_FONT)
+warhol_button.pack(side=RIGHT) ## moved to canvas
+
+four_button = Button(interface_frame, text="FourSnap", command=check_and_snap(False, None, 'Four'), font=custom.BUTTON_FONT)
+four_button.pack(side=RIGHT) ## moved to canvas
+
+snap_button = Button(interface_frame, text="SimpleSnap", command=force_snap, font=custom.BUTTON_FONT)
 snap_button.pack(side=RIGHT) ## moved to canvas
+
 interface_frame.pack(side=RIGHT)
 
 ## the canvas will display the images
