@@ -313,17 +313,22 @@ root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
 def makemenu():
-    win = Toplevel(root)
+    win = root
     top = Menu(win)
     win.config(menu=top)
 
-    snapMenu = Menu(top)
-    snapMenu.add_command(label='Selfie', command=force_snap, font=('Tempus Sans ITC', 36), underline=0)
-    snapMenu.add_command(label='Warhol', command=warhol_snap, font=('Tempus Sans ITC', 36), underline=0)
-    snapMenu.add_command(label='x4', command=four_snap, font=('Tempus Sans ITC', 36), underline=0)
-    snapMenu.add_separator()
-    snapMenu.add_command(label='Quit', command=win.quit, font=('Tempus Sans ITC', 18), underline=0)
-    top.add_cascade(label='Capture', menu=snapMenu, font=('Tempus Sans ITC', 36))
+#    snapMenu = Menu(top)
+#    snapMenu.add_command(label='Selfie', command=force_snap, font=('Tempus Sans ITC', 36), underline=0)
+    top.add_command(label='Selfie', command=force_snap, font=('Tempus Sans ITC', 36), underline=0)
+#    snapMenu.add_command(label='Warhol', command=warhol_snap, font=('Tempus Sans ITC', 36), underline=0)
+    top.add_command(label='Warhol', command=warhol_snap, font=('Tempus Sans ITC', 36), underline=0)
+#    snapMenu.add_command(label='x4', command=four_snap, font=('Tempus Sans ITC', 36), underline=0)
+    top.add_command(label='x4', command=four_snap, font=('Tempus Sans ITC', 36), underline=0)
+#    snapMenu.add_separator()
+    top.add_separator()
+#    snapMenu.add_command(label='Quit', command=win.quit, font=('Tempus Sans ITC', 18), underline=0)
+    top.add_command(label='Quit', command=win.quit, font=('Tempus Sans ITC', 18), underline=0)
+#    top.add_cascade(label='Capture', menu=snapMenu, font=('Tempus Sans ITC', 36))
 
     #paramMenu = Menu(top)
     #paramMenu.add_command(label='Preferences', command=lambda *args: custom.customize(root), font=('Tempus Sans ITC', 36), underline=0)
