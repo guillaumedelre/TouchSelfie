@@ -293,7 +293,7 @@ frame = Frame(root)
 #Button(frame, text="Parametres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
 #tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
 #tkkb_button.pack(side=LEFT)
-#send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
+send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
 #send_button.pack(side=RIGHT)
 
 if custom.TIMELAPSE > 0:
