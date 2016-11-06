@@ -17,13 +17,6 @@ import Image
 import config
 from constants import *
 
-try:
-    import picamera as mycamera
-except ImportError:
-    import cv2_camera as mycamera
-
-camera = mycamera.PiCamera()
-
 ## This is a simple GUI, so we allow the root singleton to do the legwork
 root = Tk()
 root.attributes("-fullscreen",True)
@@ -313,9 +306,9 @@ def makemenu():
     top = Menu(root)
     root.config(menu=top)
 
-    top.add_command(label='  Selfie  ', command=force_snap, font=('Tempus Sans ITC', 36), underline=0)
-    top.add_command(label='  Warhol  ', command=warhol_snap, font=('Tempus Sans ITC', 36), underline=0)
-    top.add_command(label='  x4  ', command=four_snap, font=('Tempus Sans ITC', 36), underline=0)
+    top.add_command(label='  Selfie  ', command=force_snap, font=('Tempus Sans ITC', 36))
+    top.add_command(label='  Warhol  ', command=warhol_snap, font=('Tempus Sans ITC', 36))
+    top.add_command(label='  x4  ', command=four_snap, font=('Tempus Sans ITC', 36))
 
     #paramMenu = Menu(top)
     #paramMenu.add_command(label='Preferences', command=lambda *args: custom.customize(root), font=('Tempus Sans ITC', 36), underline=0)
@@ -388,22 +381,9 @@ else:
 #    send_button.config(state=DISABLED)
 #    etext.config(state=DISABLED)
 
-#def stand_by():
-#    camera.start_preview(fullscreen=False, window=(0, 0, SCREEN_W, SCREEN_H), hflip=True, alpha=192)
-#    can.delete("text")
-#    can.create_text(WIDTH/2, HEIGHT/2, text="Touchez moi...", font=('Tempus Sans ITC', 18), tags="splash")
-#    can.update()
-
-#def wakeup():
-#    camera.stop_preview()
-#    can.delete("text")
-#    can.update()
-#    camera.close()
-
 ### take the first photo (no delay)
 #force_snap(countdown1=0)
 
-#stand_by()
 makemenu()
 
 ### check button after waiting for 200 ms
