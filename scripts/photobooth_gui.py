@@ -299,6 +299,24 @@ root.geometry("%dx%d+0+0" % (WIDTH, HEIGHT))
 root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
+def notdone():
+    showerror('Not implemented', 'Not yet available')
+
+def makemenu(win):
+    top = Menu(win)
+    win.config(menu=top)
+
+    snapMenu = Menu(top)
+    snapMenu.add_command(label='New...',  command=notdone,  underline=0)
+    snapMenu.add_command(label='Open...', command=notdone,  underline=0)
+    snapMenu.add_command(label='Quit',    command=win.quit, underline=0)
+    top.add_cascade(label='File',     menu=snapMenu,        underline=0)
+
+makemenu(root)
+filemenu = Menu(root)
+menu.add_cascade(label="File", menu=filemenu)
+filemenu.add_command(label="New", command=callback)
+
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
 param_button = Button(frame, text="Parametres", command=lambda *args: custom.customize(root))
 param_button.pack(side=LEFT)
