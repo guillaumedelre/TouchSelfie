@@ -400,22 +400,22 @@ else:
 #    send_button.config(state=DISABLED)
 #    etext.config(state=DISABLED)
 
-def stand_by():
-    camera.start_preview(fullscreen=False, window=(0, 0, SCREEN_W, SCREEN_H), hflip=True, alpha=192)
-    can.delete("text")
-    can.create_text(WIDTH/2, HEIGHT/2, text="Touchez moi...", font=('Tempus Sans ITC', 18), tags="splash")
-    can.update()
+#def stand_by():
+#    camera.start_preview(fullscreen=False, window=(0, 0, SCREEN_W, SCREEN_H), hflip=True, alpha=192)
+#    can.delete("text")
+#    can.create_text(WIDTH/2, HEIGHT/2, text="Touchez moi...", font=('Tempus Sans ITC', 18), tags="splash")
+#    can.update()
 
-def wakeup():
-    camera.stop_preview()
-    can.delete("text")
-    can.update()
-    camera.close()
+#def wakeup():
+#    camera.stop_preview()
+#    can.delete("text")
+#    can.update()
+#    camera.close()
 
 ### take the first photo (no delay)
 #force_snap(countdown1=0)
 
-stand_by()
+#stand_by()
 makemenu()
 
 ### check button after waiting for 200 ms
