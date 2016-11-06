@@ -306,7 +306,7 @@ timelapse_label.pack(side=LEFT)
 #etext = Entry(frame,width=40, textvariable=email_addr, font=custom.BUTTON_FONT)
 #etext.pack()
 frame.pack()
-etext.bind('<Button-1>', launch_tkkb)
+#etext.bind('<Button-1>', launch_tkkb)
 
 def labeled_slider(parent, label, from_, to, side, variable):
     frame = Frame(parent)
