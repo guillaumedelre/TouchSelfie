@@ -165,7 +165,7 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
 
         if timelapse_due():
             countdown1 = 0
-        im = snap(can, countdown1=countdown1, effect)
+        im = snap(can, countdown1=countdown1, effect=effect)
 #        setLights(r_var.get(), g_var.get(), b_var.get())
         if im is not None:
             if custom.TIMELAPSE > 0:
