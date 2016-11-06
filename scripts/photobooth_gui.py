@@ -329,8 +329,6 @@ def makemenu(win):
     #paramMenu.add_command(label='Clavier', command=launch_tkkb, font=('Tempus Sans ITC', 36), underline=0)
     #top.add_cascade(label='Parametres', menu=paramMenu, font=('Tempus Sans ITC', 36), underline=0)
 
-makemenu(root)
-
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
 #param_button = Button(frame, text="Parametres", command=lambda *args: custom.customize(root))
 #param_button.pack(side=LEFT)
@@ -411,7 +409,9 @@ def wakeup():
 
 ### take the first photo (no delay)
 #force_snap(countdown1=0)
+
 stand_by()
+makemenu(root)
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)

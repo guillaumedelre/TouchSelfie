@@ -59,6 +59,7 @@ def setup_google():
     return out
 
 def countdown(camera, can, countdown1):
+    camera.stop_preview()
     camera.start_preview()
     # camera.start_preview(fullscreen=False,
     #                     crop=(50, 150, 800, 480),
