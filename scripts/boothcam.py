@@ -68,7 +68,7 @@ def countdown(camera, can, countdown1):
     led_state = False
     safe_set_led(camera, led_state)
     #camera.preview_alpha = 100
-    camera.preview_alpha = 255
+    camera.preview_alpha = 192
     camera.preview_window = (0, 0, SCREEN_W, SCREEN_H)
     #camera.preview_fullscreen = False
     camera.preview_fullscreen = True
@@ -98,7 +98,7 @@ def setLights(r, g, b):
     rgb_command = 'c%s%s%s' % (chr(r), chr(g), chr(b))
 #    ser.write(rgb_command)
 
-def snap(can, countdown1, effect='None'):
+def snap(can, countdown1, effect='Warhol'):
     global image_idx
 
     try:
