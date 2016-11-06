@@ -142,8 +142,6 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
     '''
     global  image_tk, Button_enabled, last_snap, signed_in
 
-    stop_camera()
-    
     if countdown1 is None:
         countdown1 = custom.countdown1
     if signed_in:
@@ -168,6 +166,8 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
         Button_enabled = False
         can.delete("text")
         can.update()
+
+        stop_camera()
 
         if timelapse_due():
             countdown1 = 0
