@@ -142,6 +142,8 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
     '''
     global  image_tk, Button_enabled, last_snap, signed_in
 
+    stop_camera()
+    
     if countdown1 is None:
         countdown1 = custom.countdown1
     if signed_in:
@@ -351,12 +353,16 @@ snap_button.pack(side=RIGHT) ## moved to canvas
 
 interface_frame.pack(side=TOP)
 
+camera = mycamera.PiCamera()
 def start_camera():
-    camera = mycamera.PiCamera()
     camera.start_preview()
     camera.preview_alpha = 192
     camera.preview_window = (0, 0, SCREEN_W, SCREEN_H)
     camera.preview_fullscreen = False
+
+def stop_camera():
+    camera.stop_preview()
+
 
 ## the canvas will display the images
 can = Canvas(root, width=WIDTH, height=HEIGHT)
