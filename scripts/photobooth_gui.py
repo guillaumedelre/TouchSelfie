@@ -299,19 +299,24 @@ root.geometry("%dx%d+0+0" % (WIDTH, HEIGHT))
 root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
-def notdone():
-    showerror('Not implemented', 'Not yet available')
+def makeCommandMenu():
+    CmdBtn = Menubutton(root, text='Button Commands', underline=0)
+    CmdBtn.pack(side=LEFT, padx="2m")
+    CmdBtn.menu = Menu(CmdBtn)
 
 def makemenu(win):
     top = Menu(win)
     win.config(menu=top)
 
     snapMenu = Menu(top)
-    snapMenu.add_command(label='New...',  command=notdone,  underline=0)
-    snapMenu.add_command(label='Open...', command=notdone,  underline=0)
+    snapMenu.add_command(label='Selfie',  command=force_snap,  underline=0)
+    snapMenu.add_command(label='Warhol', command=warhol_snap,  underline=0)
+    snapMenu.add_command(label='x4', command=four_snap,  underline=0)
+    snapMenu.add_separator()
     snapMenu.add_command(label='Quit',    command=win.quit, underline=0)
-    top.add_cascade(label='File',     menu=snapMenu,        underline=0)
+    top.add_cascade(label='Capture',     menu=snapMenu,        underline=0)
 
+makeCommandMenu()
 makemenu(root)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
