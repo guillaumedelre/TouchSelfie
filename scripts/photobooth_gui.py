@@ -322,7 +322,7 @@ def makemenu(win):
     snapMenu.add_command(label='x4', command=four_snap, font=('Tempus Sans ITC', 36), underline=0)
     snapMenu.add_separator()
     snapMenu.add_command(label='Quit', command=win.quit, font=('Tempus Sans ITC', 18), underline=0)
-    top.add_cascade(label='Capture', menu=snapMenu, font=('Tempus Sans ITC', 36), relief=RAISED)
+    top.add_cascade(label='Capture', menu=snapMenu, font=('Tempus Sans ITC', 36))
 
     #paramMenu = Menu(top)
     #paramMenu.add_command(label='Preferences', command=lambda *args: custom.customize(root), font=('Tempus Sans ITC', 36), underline=0)
