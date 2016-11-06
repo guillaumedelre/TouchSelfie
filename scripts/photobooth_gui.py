@@ -327,7 +327,7 @@ def labeled_slider(parent, label, from_, to, side, variable):
 interface_frame = Frame(root)
 
 snap_button = Button(interface_frame, text="snap", command=force_snap, font=custom.BUTTON_FONT)
-# snap_button.pack(side=RIGHT) ## moved to canvas
+snap_button.pack(side=RIGHT) ## moved to canvas
 interface_frame.pack(side=RIGHT)
 
 ## the canvas will display the images
