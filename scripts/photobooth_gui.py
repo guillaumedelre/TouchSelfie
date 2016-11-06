@@ -141,12 +141,14 @@ def check_and_snap(force=False, countdown1=None, effect='None'):
 
     if countdown1 is None:
         countdown1 = custom.countdown1
-    if signed_in:
+
+#    if signed_in:
 #        send_button.config(state=NORMAL)
 #        etext.config(state=NORMAL)
-    else:
+#    else:
 #        send_button.config(state=DISABLED)
 #        etext.config(state=DISABLED)
+
     if (Button_enabled == False):
         ## inform alamode that we are ready to receive button press events
         ## ser.write('e') #enable button (not used)
