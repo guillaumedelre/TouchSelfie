@@ -235,19 +235,19 @@ root.protocol('WM_DELETE_WINDOW', on_close)
 def warhol_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    wakeup()
+#    wakeup()
     check_and_snap(force=True, countdown1=countdown1, effect='Warhol')
 
 def four_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    wakeup()
+#    wakeup()
     check_and_snap(force=True, countdown1=countdown1, effect='Four')
 
 def force_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    wakeup()
+#    wakeup()
     check_and_snap(force=True, countdown1=countdown1)
 
 
