@@ -290,9 +290,9 @@ root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
-Button(frame, text="Parametres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
+#Button(frame, text="Parametres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
 tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
-# tkkb_button.pack(side=LEFT)
+tkkb_button.pack(side=LEFT)
 send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
 send_button.pack(side=RIGHT)
 
