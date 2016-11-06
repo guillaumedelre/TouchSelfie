@@ -17,6 +17,13 @@ import Image
 import config
 from constants import *
 
+try:
+    import picamera as mycamera
+except ImportError:
+    import cv2_camera as mycamera
+
+camera = mycamera.PiCamera()
+
 ## This is a simple GUI, so we allow the root singleton to do the legwork
 root = Tk()
 root.attributes("-fullscreen",True)
@@ -228,16 +235,19 @@ root.protocol('WM_DELETE_WINDOW', on_close)
 def warhol_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
+    wakeup()
     check_and_snap(force=True, countdown1=countdown1, effect='Warhol')
 
 def four_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
+    wakeup()
     check_and_snap(force=True, countdown1=countdown1, effect='Four')
 
 def force_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
+    wakeup()
     check_and_snap(force=True, countdown1=countdown1)
 
 
@@ -386,12 +396,20 @@ else:
 #    send_button.config(state=DISABLED)
 #    etext.config(state=DISABLED)
 
+def stand_by():
+    camera.start_preview()
+    can.delete("text")
+    can.create_text(WIDTH/2, HEIGHT/2, text="Touchez quand vous etes prets", font=custom.CANVAS_FONT, tags="splash")
+    can.update()
+
+def wakeup():
+    camera.stop_preview()
+    can.delete("text")
+    can.update()
+
 ### take the first photo (no delay)
-boothcam.mycamera.PiCamera()
-can.delete("text")
-can.create_text(WIDTH/2, HEIGHT/2, text="Touchez quand vous etes prets", font=custom.CANVAS_FONT, tags="splash")
-can.update()
 #force_snap(countdown1=0)
+stand_by()
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)
