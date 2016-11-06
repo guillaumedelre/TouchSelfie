@@ -124,9 +124,9 @@ def timelapse_due():
 def refresh_oauth2_credentials():
     if custom.SIGN_ME_IN:
         if setup_google():
-            print 'Rafraîchi!', custom.oauth2_refresh_period
+            print 'Rafraichi!', custom.oauth2_refresh_period
         else:
-            print 'Echec du rafraîchissement'
+            print 'Echec du rafraichissement'
         root.after(custom.oauth2_refresh_period, refresh_oauth2_credentials)
 
 def check_and_snap(force=False, countdown1=None):
