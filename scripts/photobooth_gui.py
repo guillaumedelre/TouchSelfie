@@ -381,12 +381,13 @@ if custom.SIGN_ME_IN:
     signed_in = setup_google()
 else:
     signed_in = False
-if not signed_in:
+
+#if not signed_in:
 #    send_button.config(state=DISABLED)
 #    etext.config(state=DISABLED)
 
 ### take the first photo (no delay)
-#can.delete("text")
+can.delete("text")
 #can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
 can.update()
 #force_snap(countdown1=0)
