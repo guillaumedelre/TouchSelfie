@@ -222,6 +222,16 @@ def on_close(*args, **kw):
     root.quit()
 root.protocol('WM_DELETE_WINDOW', on_close)
 
+def warhol_snap(countdown1=None):
+    if countdown1 is None:
+        countdown1 = custom.countdown1
+    check_and_snap(force=True, countdown1=countdown1, effect='Warhol')
+
+def four_snap(countdown1=None):
+    if countdown1 is None:
+        countdown1 = custom.countdown1
+    check_and_snap(force=True, countdown1=countdown1, effect='Four')
+
 def force_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
@@ -326,10 +336,10 @@ def labeled_slider(parent, label, from_, to, side, variable):
 ## add a software button in case hardware button is not available
 interface_frame = Frame(root)
 
-warhol_button = Button(interface_frame, text="WarholSnap", command=check_and_snap(False, None, 'Warhol'), font=custom.BUTTON_FONT)
+warhol_button = Button(interface_frame, text="WarholSnap", command=warhol_snap, font=custom.BUTTON_FONT)
 warhol_button.pack(side=RIGHT) ## moved to canvas
 
-four_button = Button(interface_frame, text="FourSnap", command=check_and_snap(False, None, 'Four'), font=custom.BUTTON_FONT)
+four_button = Button(interface_frame, text="FourSnap", command=four_snap, font=custom.BUTTON_FONT)
 four_button.pack(side=RIGHT) ## moved to canvas
 
 snap_button = Button(interface_frame, text="SimpleSnap", command=force_snap, font=custom.BUTTON_FONT)
