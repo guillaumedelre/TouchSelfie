@@ -69,7 +69,7 @@ def launch_tkkb(*args):
         tkkb.transient(root)
         tkkb_button.config(command=kill_tkkb, text="Close KB")
         tkkb.protocol("WM_DELETE_WINDOW", kill_tkkb)
-        
+
 def kill_tkkb():
     '''
     Delete on screen keyboard program called tkkb-keyboard.
@@ -94,7 +94,7 @@ def display_image(im=None):
     display image im in GUI window
     '''
     global image_tk
-    
+
     x,y = im.size
     x = int(x / SCALE)
     y = int(y / SCALE)
@@ -105,8 +105,8 @@ def display_image(im=None):
     ## delete all canvas elements with "image" in the tag
     can.delete("image")
     can.create_image([(WIDTH + x) / 2 - x/2,
-                      0 + y / 2], 
-                     image=image_tk, 
+                      0 + y / 2],
+                     image=image_tk,
                      tags="image")
 
 def timelapse_due():
@@ -124,11 +124,11 @@ def timelapse_due():
 def refresh_oauth2_credentials():
     if custom.SIGN_ME_IN:
         if setup_google():
-            print 'refreshed!', custom.oauth2_refresh_period
+            print 'Rafraîchi!', custom.oauth2_refresh_period
         else:
-            print 'refresh failed'
+            print 'Echec du rafraîchissement'
         root.after(custom.oauth2_refresh_period, refresh_oauth2_credentials)
-    
+
 def check_and_snap(force=False, countdown1=None):
     '''
     Check button status and snap a photo if button has been pressed.
@@ -137,7 +137,7 @@ def check_and_snap(force=False, countdown1=None):
     countdown1 -- starting value for countdown timer
     '''
     global  image_tk, Button_enabled, last_snap, signed_in
-    
+
     if countdown1 is None:
         countdown1 = custom.countdown1
     if signed_in:
@@ -153,7 +153,7 @@ def check_and_snap(force=False, countdown1=None):
         # can.delete("text")
         # can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Press button when ready", font=custom.CANVAS_FONT, tags="text")
         # can.update()
-        
+
     ## get command string from alamode
 #    command = ser.readline().strip()
     command=""
@@ -162,7 +162,7 @@ def check_and_snap(force=False, countdown1=None):
         Button_enabled = False
         can.delete("text")
         can.update()
-        
+
         if timelapse_due():
             countdown1 = 0
         im = snap(can, countdown1=countdown1, effect='None')
@@ -175,15 +175,15 @@ def check_and_snap(force=False, countdown1=None):
             last_snap = time.time()
             display_image(im)
             can.delete("text")
-            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Uploading Image", font=custom.CANVAS_FONT, tags="text")
+            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Envoie de l'image", font=custom.CANVAS_FONT, tags="text")
             can.update()
             if signed_in:
                 if custom.albumID == 'None':
                     global albumID_informed
                     if not albumID_informed:
                         tkMessageBox.showinfo(
-                            'Album ID not set',
-                            'Click Customize to select albumID',
+                            'ID d\'album inconnu',
+                            'Cliquez sur paramètres pour sélectionner un ID d\'album',
                             parent=root
                         )
                         albumID_informed = True
@@ -191,9 +191,9 @@ def check_and_snap(force=False, countdown1=None):
                     try:
                         googleUpload(custom.PROC_FILENAME)
                     except Exception, e:
-                        tkMessageBox.showinfo("Upload Error", str(e) +
-                                              '\nUpload Failed:%s' % e)
-                    
+                        tkMessageBox.showinfo("Erreur d'upload", str(e) +
+                                              '\nEchec de l\'upload:%s' % e)
+
                     # signed_in = False
             can.delete("text")
             # can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Press button when ready", font=custom.CANVAS_FONT, tags="text")
@@ -232,7 +232,7 @@ def force_snap(countdown1=None):
 #if they enter an email address send photo. add error checking
 def sendPic(*args):
     if signed_in:
-        print 'sending photo by email to %s' % email_addr.get()
+        print 'Envoie de la photo  %s' % email_addr.get()
         try:
             sendMail(email_addr.get().strip(),
                      custom.emailSubject,
@@ -242,18 +242,18 @@ def sendPic(*args):
             etext.focus_set()
             kill_tkkb()
         except Exception, e:
-            print 'Send Failed::', e
+            print 'Echec de l\'envoie::', e
             can.delete("all")
-            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Send Failed", font=custom.CANVAS_FONT, tags="text")
+            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Echec de l'envoie", font=custom.CANVAS_FONT, tags="text")
             can.update()
             time.sleep(1)
             can.delete("all")
             im = Image.open(custom.PROC_FILENAME)
             display_image(im)
-            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Press button when ready", font=custom.CANVAS_FONT, tags="text")
+            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Touchez l'écran...", font=custom.CANVAS_FONT, tags="text")
             can.update()
     else:
-        print 'Not signed in'
+        print 'Déconnecté'
 
 #ser = findser()
 
@@ -290,10 +290,10 @@ root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
-Button(frame, text="Customize", command=lambda *args: custom.customize(root)).pack(side=LEFT)
+Button(frame, text="Paramètres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
 tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
 # tkkb_button.pack(side=LEFT)
-send_button = Button(frame, text="SendEmail", command=sendPic, font=custom.BUTTON_FONT)
+send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
 send_button.pack(side=RIGHT)
 
 if custom.TIMELAPSE > 0:
@@ -348,10 +348,8 @@ force_snap(countdown1=0)
 root.after(200, check_and_snap)
 if custom.SIGN_ME_IN:
     root.after(custom.oauth2_refresh_period, refresh_oauth2_credentials)
-root.wm_title("Wyolum Photobooth")
+root.wm_title("SmileBox")
 etext.focus_set()
 # etext.bind("<Enter>", sendPic)
 on_rgb_change()
 root.mainloop()
-
-
