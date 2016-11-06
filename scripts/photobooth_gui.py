@@ -314,10 +314,10 @@ def makemenu(win):
     snapMenu.add_command(label='Quit', command=win.quit, font=('Tempus Sans ITC', 18), underline=0)
     top.add_cascade(label='Capture', menu=snapMenu, font=('Tempus Sans ITC', 36), underline=0)
 
-    paramMenu = Menu(top)
-    paramMenu.add_command(label='Preferences', command=lambda *args: custom.customize(root), font=('Tempus Sans ITC', 36), underline=0)
-    paramMenu.add_command(label='Clavier', command=launch_tkkb, font=('Tempus Sans ITC', 36), underline=0)
-    top.add_cascade(label='Parametres', menu=paramMenu, font=('Tempus Sans ITC', 36), underline=0)
+    #paramMenu = Menu(top)
+    #paramMenu.add_command(label='Preferences', command=lambda *args: custom.customize(root), font=('Tempus Sans ITC', 36), underline=0)
+    #paramMenu.add_command(label='Clavier', command=launch_tkkb, font=('Tempus Sans ITC', 36), underline=0)
+    #top.add_cascade(label='Parametres', menu=paramMenu, font=('Tempus Sans ITC', 36), underline=0)
 
 makemenu(root)
 
@@ -387,8 +387,9 @@ else:
 #    etext.config(state=DISABLED)
 
 ### take the first photo (no delay)
+camera.start_preview()
 can.delete("text")
-#can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
+can.create_text(WIDTH/2, HEIGHT/2, text="Touchez quand vous etes prets", font=custom.CANVAS_FONT, tags="splash")
 can.update()
 #force_snap(countdown1=0)
 
