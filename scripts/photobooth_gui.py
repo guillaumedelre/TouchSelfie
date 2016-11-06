@@ -183,7 +183,7 @@ def check_and_snap(force=False, countdown1=None):
                     if not albumID_informed:
                         tkMessageBox.showinfo(
                             'ID d\'album inconnu',
-                            'Cliquez sur paramètres pour sélectionner un ID d\'album',
+                            'Cliquez sur parametres pour selectionner un ID d\'album',
                             parent=root
                         )
                         albumID_informed = True
@@ -250,10 +250,10 @@ def sendPic(*args):
             can.delete("all")
             im = Image.open(custom.PROC_FILENAME)
             display_image(im)
-            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Touchez l'écran...", font=custom.CANVAS_FONT, tags="text")
+            can.create_text(WIDTH/2, HEIGHT - STATUS_H_OFFSET, text="Touchez l'ecran...", font=custom.CANVAS_FONT, tags="text")
             can.update()
     else:
-        print 'Déconnecté'
+        print 'Deconnecte'
 
 #ser = findser()
 
@@ -290,7 +290,7 @@ root.focus_set() # <-- move focus to this widget
 frame = Frame(root)
 
 # Button(frame, text="Exit", command=on_close).pack(side=LEFT)
-Button(frame, text="Paramètres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
+Button(frame, text="Parametres", command=lambda *args: custom.customize(root)).pack(side=LEFT)
 tkkb_button = Button(frame, command=launch_tkkb, text="Launch-KB")
 # tkkb_button.pack(side=LEFT)
 send_button = Button(frame, text="Envoyer", command=sendPic, font=custom.BUTTON_FONT)
