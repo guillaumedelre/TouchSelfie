@@ -261,20 +261,20 @@ def customize(master):
 
     def archive_dialog():
         options = {}
-        options['initialdir'] = '/media'
-        options['title'] = 'Select Archive Directory'
+        options['initialdir'] = '/home/pi/TouchSelfie'
+        options['title'] = 'Choisir le dossier Archive'
         options['parent'] = self
         archive_dir = tkFileDialog.askdirectory(**options)
         archive_var.set(archive_dir)
     def launch_album_select(*args):
         if not hasattr(self, 'albums'):
-            self.albums = listalbums.getAlbums("kevin.osborn@gmail.com")
+            self.albums = listalbums.getAlbums("delre.guillaume@gmail.com")
         listalbums.AlbumSelect(self, self.album_entry, self.albums)
 
-    string_customizer('Email Subject', emailSubject, update_subj)
-    string_customizer('Email Msg', emailMsg, update_msg)
-    string_customizer('Caption', photoCaption, update_caption)
-    album_frame, self.album_entry = string_customizer('albumID',
+    string_customizer('Sujet', emailSubject, update_subj)
+    string_customizer('Message', emailMsg, update_msg)
+    string_customizer('Legende', photoCaption, update_caption)
+    album_frame, self.album_entry = string_customizer('Album',
                                                       albumID,
                                                       update_albumID)
     ### add in Album selector
@@ -289,29 +289,29 @@ def customize(master):
     archive_var = Tkinter.StringVar()
     archive_var.set(archive_dir)
     archive_frame = Tkinter.Frame(self)
-    Tkinter.Label(archive_frame, text='Archive Directory').pack(side=Tkinter.LEFT)
+    Tkinter.Label(archive_frame, text='Archive').pack(side=Tkinter.LEFT)
     archive_entry = Tkinter.Entry(archive_frame, textvariable=archive_var, width=60)
     archive_entry.pack(side=Tkinter.LEFT)
     archive_var.trace('w', curry(update_archive, archive_entry))
-    Tkinter.Button(archive_frame, text='Browse', command=archive_dialog).pack(side=Tkinter.LEFT)
+    Tkinter.Button(archive_frame, text='Parcourir', command=archive_dialog).pack(side=Tkinter.LEFT)
     archive_frame.pack(side=Tkinter.TOP)
 
     logo_var = Tkinter.StringVar()
     logo_var.set(logopng)
     logo_frame = Tkinter.Frame(self)
-    Tkinter.Label(logo_frame, text='Logo File').pack(side=Tkinter.LEFT)
+    Tkinter.Label(logo_frame, text='Logo').pack(side=Tkinter.LEFT)
     logo_entry = Tkinter.Entry(logo_frame, textvariable=logo_var, width=60)
     logo_entry.pack(side=Tkinter.LEFT)
     logo_var.trace('w', curry(update_logo, logo_entry))
-    Tkinter.Button(logo_frame, text='Browse', command=logo_dialog).pack(side=Tkinter.LEFT)
+    Tkinter.Button(logo_frame, text='Parcourir', command=logo_dialog).pack(side=Tkinter.LEFT)
     logo_frame.pack(side=Tkinter.TOP)
     buttonbox = Tkinter.Frame(self)
     ##  Tkinter.Button(buttonbox, text='Cancel', command=self.destroy).pack(side=Tkinter.LEFT) changes are stored when they are made. cancel is harder than this
-    Tkinter.Button(buttonbox, text='Save', command=update_and_close).pack(
+    Tkinter.Button(buttonbox, text='Enregistrer', command=update_and_close).pack(
         side=Tkinter.LEFT)
-    Tkinter.Button(buttonbox, text='Cancel', command=close).pack(
+    Tkinter.Button(buttonbox, text='Annuler', command=close).pack(
         side=Tkinter.LEFT)
-    Tkinter.Button(buttonbox, text='Quit TouchSelfie', command=quit).pack(
+    Tkinter.Button(buttonbox, text='Quitter', command=quit).pack(
         side=Tkinter.LEFT)
     buttonbox.pack()
 
