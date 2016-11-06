@@ -354,7 +354,7 @@ interface_frame.pack(side=TOP)
 def start_camera():
     camera = mycamera.PiCamera()
     camera.start_preview()
-    camera.preview_alpha = 255
+    camera.preview_alpha = 192
     camera.preview_window = (0, 0, SCREEN_W, SCREEN_H)
     camera.preview_fullscreen = False
 
