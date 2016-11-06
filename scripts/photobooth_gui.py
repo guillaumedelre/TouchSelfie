@@ -225,12 +225,12 @@ root.protocol('WM_DELETE_WINDOW', on_close)
 def warhol_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    check_and_snap(force=False, countdown1=countdown1, effect='Warhol')
+    check_and_snap(force=True, countdown1=countdown1, effect='Warhol')
 
 def four_snap(countdown1=None):
     if countdown1 is None:
         countdown1 = custom.countdown1
-    check_and_snap(force=False, countdown1=countdown1, effect='Four')
+    check_and_snap(force=True, countdown1=countdown1, effect='Four')
 
 def force_snap(countdown1=None):
     if countdown1 is None:
@@ -367,7 +367,7 @@ if not signed_in:
 can.delete("text")
 can.create_text(WIDTH/2, HEIGHT/2, text="SMILE ;-)", font=custom.CANVAS_FONT, tags="splash")
 can.update()
-force_snap(countdown1=0)
+#force_snap(countdown1=0)
 
 ### check button after waiting for 200 ms
 root.after(200, check_and_snap)
