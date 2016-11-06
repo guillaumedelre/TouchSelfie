@@ -102,7 +102,6 @@ def snap(can, countdown1, effect='None'):
     global image_idx
 
     try:
-        effect='Warhol'
         if custom.ARCHIVE and os.path.exists(custom.archive_dir) and os.path.exists(custom.PROC_FILENAME):
             ### copy image to archive
             image_idx += 1
